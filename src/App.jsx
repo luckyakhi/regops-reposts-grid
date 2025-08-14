@@ -54,6 +54,11 @@ const palette = {
   Overdue: "#ef4444",
 };
 
+const user = {
+  name: "Alex Johnson",
+  avatarUrl: "https://i.pravatar.cc/100?img=12",
+};
+
 // ---------- Seed Data ----------
 const SEED = [
   {
@@ -261,6 +266,8 @@ export default function RegulatoryReportsMockup() {
               <button className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border text-sm hover:bg-slate-50">
                 <FilterIcon className="w-4 h-4" /> Save View
               </button>
+              <img src={user.avatarUrl} alt={user.name} className="w-8 h-8 rounded-full" />
+              <span className="hidden md:inline text-sm">Hi, {user.name.split(" ")[0]}</span>
             </div>
           </div>
 
