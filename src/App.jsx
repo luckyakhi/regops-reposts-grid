@@ -271,8 +271,8 @@ export default function RegulatoryReportsMockup() {
             <section className="xl:col-span-2 space-y-6">
               {/* Controls */}
               <div className="bg-white rounded-2xl border p-4 shadow-sm">
-                <div className="grid grid-cols-1 md:grid-cols-7 gap-3">
-                  <div className="md:col-span-2 relative">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-3">
+                  <div className="lg:col-span-2 relative">
                     <SearchIcon className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                     <input
                       type="text"
@@ -285,7 +285,7 @@ export default function RegulatoryReportsMockup() {
                   <Select label="Status" value={status} setValue={setStatus} options={["", ...STATUSES]} />
                   <Select label="Frequency" value={freq} setValue={setFreq} options={["", ...FREQS]} />
                   <Select label="Owner" value={owner} setValue={setOwner} options={["", ...owners]} />
-                  <div className="flex items-center gap-2 md:col-span-2">
+                  <div className="flex items-center gap-2 lg:col-span-2">
                     <input
                       type="date"
                       value={dateFrom}
