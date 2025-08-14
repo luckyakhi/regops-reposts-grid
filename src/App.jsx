@@ -314,8 +314,8 @@ export default function RegulatoryReportsMockup() {
               </div>
 
               {/* Table */}
-              <div className="bg-white rounded-2xl border shadow-sm overflow-hidden">
-                <div className="overflow-auto">
+              <div className="bg-white rounded-2xl border shadow-sm">
+                <div className="overflow-x-auto">
                   <table className="min-w-full text-sm">
                     <thead className="bg-slate-50 text-slate-600">
                       <tr>
@@ -342,7 +342,10 @@ export default function RegulatoryReportsMockup() {
                           <td className="px-4 py-3">{r.frequency}</td>
                           <td className="px-4 py-3">{r.owner}</td>
                           <td className="px-4 py-3">{r.reviewedBy}</td>
-                          <td className="px-4 py-3 max-w-[360px] truncate" title={r.comments}>
+                          <td
+                            className="px-4 py-3 w-[360px] whitespace-normal break-words"
+                            title={r.comments}
+                          >
                             {r.comments}
                           </td>
                           <td className="px-2 py-2">
