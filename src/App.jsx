@@ -260,12 +260,6 @@ export default function RegulatoryReportsMockup() {
               <h1 className="text-xl font-semibold">Regulatory Reports — My Assignments</h1>
             </div>
             <div className="flex items-center gap-2">
-              <button className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-900 text-white text-sm hover:bg-black transition">
-                <ArrowDownToLine className="w-4 h-4" /> Export CSV
-              </button>
-              <button className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border text-sm hover:bg-slate-50">
-                <FilterIcon className="w-4 h-4" /> Save View
-              </button>
               <img src={user.avatarUrl} alt={user.name} className="w-8 h-8 rounded-full" />
               <span className="hidden md:inline text-sm">Hi, {user.name.split(" ")[0]}</span>
             </div>
