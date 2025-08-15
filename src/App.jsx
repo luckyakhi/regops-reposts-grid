@@ -267,7 +267,15 @@ export default function RegulatoryReportsMockup() {
 
             {/* Content */}
             <div className="p-6 space-y-6">
-              {/* Controls */}
+              {/* KPIs */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <Kpi title="Total Reports" value={metrics.total} />
+                <Kpi title="Due Today" value={metrics.dueToday} />
+                <Kpi title="Overdue" value={metrics.overdue} tone="danger" />
+                  <Kpi title="Pending Review" value={metrics.byStatus.find((d) => d.name === "Pending Review").value} tone="warn" />
+              </div>
+
+              {/* Search Filters */}
               <div className="bg-white rounded-2xl border p-4 shadow-sm">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-3">
                   <div className="lg:col-span-2 relative">
@@ -301,14 +309,6 @@ export default function RegulatoryReportsMockup() {
                     />
                   </div>
                 </div>
-              </div>
-
-              {/* KPIs */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <Kpi title="Total Reports" value={metrics.total} />
-                <Kpi title="Due Today" value={metrics.dueToday} />
-                <Kpi title="Overdue" value={metrics.overdue} tone="danger" />
-                <Kpi title="Pending Review" value={metrics.byStatus.find((d) => d.name === "Pending Review").value} tone="warn" />
               </div>
 
               {/* Table */}
