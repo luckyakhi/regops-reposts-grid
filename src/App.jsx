@@ -265,10 +265,8 @@ export default function RegulatoryReportsMockup() {
             </div>
           </div>
 
-          {/* Content Grid */}
-          <div className="p-6 grid grid-cols-1 xl:grid-cols-3 gap-6">
-            {/* Left: Controls + Table */}
-            <section className="xl:col-span-2 space-y-6">
+            {/* Content */}
+            <div className="p-6 space-y-6">
               {/* Controls */}
               <div className="bg-white rounded-2xl border p-4 shadow-sm">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-3">
@@ -311,6 +309,59 @@ export default function RegulatoryReportsMockup() {
                 <Kpi title="Due Today" value={metrics.dueToday} />
                 <Kpi title="Overdue" value={metrics.overdue} tone="danger" />
                 <Kpi title="Pending Review" value={metrics.byStatus.find((d) => d.name === "Pending Review").value} tone="warn" />
+              </div>
+
+              {/* Chart & Helpers */}
+              <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                <div className="bg-white rounded-2xl border p-4 shadow-sm h-[320px]">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-semibold">Overall Report Metrics</h3>
+                    <span className="text-xs text-slate-500">by status</span>
+                  </div>
+                  <div className="h-[240px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie data={metrics.byStatus} dataKey="value" nameKey="name" outerRadius={80} label>
+                          {metrics.byStatus.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={palette[entry.name]} />
+                          ))}
+                        </Pie>
+                        <Tooltip />
+                        <Legend />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl border p-4 shadow-sm space-y-3">
+                  <h3 className="font-semibold">Quick Actions</h3>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button className="justify-between inline-flex items-center gap-2 px-3 py-2 rounded-xl border hover:bg-slate-50">
+                      SLA Breaches <span className="ml-auto inline-flex items-center justify-center w-7 h-7 rounded-full bg-rose-100 text-rose-700 text-xs">{metrics.overdue}</span>
+                    </button>
+                    <button className="justify-between inline-flex items-center gap-2 px-3 py-2 rounded-xl border hover:bg-slate-50">
+                      Checker Queue <span className="ml-auto inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-100 text-amber-700 text-xs">{metrics.byStatus.find((d) => d.name === "Pending Review").value}</span>
+                    </button>
+                    <button className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border hover:bg-slate-50">
+                      Refresh Data
+                    </button>
+                    <button className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border hover:bg-slate-50">
+                      Manage Subscriptions
+                    </button>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-slate-900 to-slate-700 text-white rounded-2xl p-4 shadow-sm">
+                  <div className="flex items-start gap-3">
+                    <ShieldCheck className="w-5 h-5 mt-0.5" />
+                    <div>
+                      <div className="font-semibold">Maker–Checker Workflow</div>
+                      <p className="text-xs text-white/80 mt-1">
+                        Use <span className="font-medium">Pending Review</span> to signal the Checker queue. Actions are audited and changes tracked to ensure compliance.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Table */}
@@ -377,61 +428,7 @@ export default function RegulatoryReportsMockup() {
                   </div>
                 </div>
               </div>
-            </section>
-
-            {/* Right: Chart & Helpers */}
-            <section className="space-y-6">
-              <div className="bg-white rounded-2xl border p-4 shadow-sm h-[320px]">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-semibold">Overall Report Metrics</h3>
-                  <span className="text-xs text-slate-500">by status</span>
-                </div>
-                <div className="h-[240px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie data={metrics.byStatus} dataKey="value" nameKey="name" outerRadius={80} label>
-                        {metrics.byStatus.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={palette[entry.name]} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                      <Legend />
-                    </PieChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl border p-4 shadow-sm space-y-3">
-                <h3 className="font-semibold">Quick Actions</h3>
-                <div className="grid grid-cols-2 gap-3">
-                  <button className="justify-between inline-flex items-center gap-2 px-3 py-2 rounded-xl border hover:bg-slate-50">
-                    SLA Breaches <span className="ml-auto inline-flex items-center justify-center w-7 h-7 rounded-full bg-rose-100 text-rose-700 text-xs">{metrics.overdue}</span>
-                  </button>
-                  <button className="justify-between inline-flex items-center gap-2 px-3 py-2 rounded-xl border hover:bg-slate-50">
-                    Checker Queue <span className="ml-auto inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-100 text-amber-700 text-xs">{metrics.byStatus.find((d) => d.name === "Pending Review").value}</span>
-                  </button>
-                  <button className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border hover:bg-slate-50">
-                    Refresh Data
-                  </button>
-                  <button className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border hover:bg-slate-50">
-                    Manage Subscriptions
-                  </button>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-slate-900 to-slate-700 text-white rounded-2xl p-4 shadow-sm">
-                <div className="flex items-start gap-3">
-                  <ShieldCheck className="w-5 h-5 mt-0.5" />
-                  <div>
-                    <div className="font-semibold">Maker–Checker Workflow</div>
-                    <p className="text-xs text-white/80 mt-1">
-                      Use <span className="font-medium">Pending Review</span> to signal the Checker queue. Actions are audited and changes tracked to ensure compliance.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
+            </div>
         </main>
       </div>
     </div>
