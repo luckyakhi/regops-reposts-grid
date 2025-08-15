@@ -277,15 +277,15 @@ export default function RegulatoryReportsMockup() {
 
               {/* Search Filters */}
               <div className="bg-white rounded-2xl border p-4 shadow-sm">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-3">
-                  <div className="lg:col-span-2 relative">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3">
+                  <div className="lg:col-span-1 relative min-w-0">
                     <SearchIcon className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                     <input
                       type="text"
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       placeholder="Search by name, owner, comment…"
-                      className="w-full pl-9 pr-3 py-2 rounded-xl border focus:ring-2 focus:ring-slate-300 outline-none"
+                      className="w-full min-w-0 pl-9 pr-3 py-2 rounded-xl border focus:ring-2 focus:ring-slate-300 outline-none"
                     />
                   </div>
                   <Select label="Status" value={status} setValue={setStatus} options={["", ...STATUSES]} />
