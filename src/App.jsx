@@ -351,17 +351,6 @@ export default function RegulatoryReportsMockup() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-slate-900 to-slate-700 text-white rounded-2xl p-4 shadow-sm">
-                  <div className="flex items-start gap-3">
-                    <ShieldCheck className="w-5 h-5 mt-0.5" />
-                    <div>
-                      <div className="font-semibold">Maker–Checker Workflow</div>
-                      <p className="text-xs text-white/80 mt-1">
-                        Use <span className="font-medium">Pending Review</span> to signal the Checker queue. Actions are audited and changes tracked to ensure compliance.
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* Table */}
